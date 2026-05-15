@@ -15,6 +15,7 @@ data/.openclaw/devices/
 data/.openclaw/telegram/
 data/.openclaw/delivery-queue/
 data/.openclaw/nodes/
+data/.openclaw/my-uploads/
 
 # Never push cache and build files
 data/.cache/
