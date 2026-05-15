@@ -1,0 +1,27 @@
+# Never push secrets
+.env
+*.env
+
+# Never push personal data
+data/.openclaw/agents/main/agent/auth-profiles.json
+data/.openclaw/credentials/
+data/.openclaw/identity/
+data/.openclaw/memory/
+data/.openclaw/agents/main/sessions/
+data/.openclaw/logs/
+data/.openclaw/tasks/
+data/.openclaw/flows/
+data/.openclaw/devices/
+data/.openclaw/telegram/
+data/.openclaw/delivery-queue/
+data/.openclaw/nodes/
+
+# Never push cache and build files
+data/.cache/
+data/.npm/
+data/.npm-global/
+data/linuxbrew/
+data/.bash_history
+
+# Build logs
+.build.log

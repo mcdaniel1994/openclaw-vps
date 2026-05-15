@@ -1,0 +1,195 @@
+{
+  "channels": {
+    "telegram": {
+      "dmPolicy": "allowlist",
+      "groupPolicy": "allowlist",
+      "streaming": {
+        "mode": "partial"
+      },
+      "botToken": "8784937383:AAH-oJ5a6gJUGZG8p6ymiWBRYXQ9gyyiGLQ",
+      "enabled": true,
+      "allowFrom": [
+        "8683094171"
+      ]
+    }
+  },
+  "update": {
+    "channel": "stable",
+    "checkOnStart": false
+  },
+  "browser": {
+    "headless": true,
+    "noSandbox": true,
+    "defaultProfile": "openclaw"
+  },
+  "commands": {
+    "bash": true,
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true
+  },
+  "tools": {
+    "profile": "full",
+    "elevated": {
+      "enabled": true,
+      "allowFrom": {
+        "webchat": [
+          "*"
+        ]
+      }
+    }
+  },
+  "agents": {
+    "list": [
+      {
+        "id": "main",
+        "name": "main"
+      }
+    ],
+    "defaults": {
+      "workspace": "/data/.openclaw/workspace",
+      "model": {
+        "primary": "deepseek/deepseek-chat"
+      },
+      "models": {
+        "deepseek/deepseek-chat": {
+          "alias": "DeepSeek V3"
+        },
+        "groq/llama-3.3-70b-versatile": {
+          "alias": "Llama 3.3 70B"
+        },
+        "google/gemini-2.5-pro": {
+          "alias": "Gemini 2.5 Pro"
+        },
+        "google/gemini-2.5-flash": {
+          "alias": "Gemini 2.5 Flash"
+        },
+        "google/gemini-3.1-pro-preview": {
+          "alias": "Gemini 3.1 Pro Preview"
+        },
+        "google/gemini-3-flash-preview": {
+          "alias": "Gemini 3 Flash Preview"
+        }
+      },
+      "thinkingDefault": "low",
+      "compaction": {
+        "mode": "safeguard"
+      }
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "controlUi": {
+      "allowedOrigins": [
+        "http://localhost:18789",
+        "http://127.0.0.1:18789",
+        "https://openclaw-qo4r.srv1662503.hstgr.cloud",
+        "wss://openclaw-qo4r.srv1662503.hstgr.cloud"
+      ]
+    },
+    "auth": {
+      "mode": "token",
+      "token": "Dt4S8VqiNRzYJ1HDFzFlQ2kiSWZQBalk",
+      "rateLimit": {
+        "maxAttempts": 10,
+        "windowMs": 60000,
+        "lockoutMs": 300000
+      }
+    },
+    "remote": {
+      "token": "Dt4S8VqiNRzYJ1HDFzFlQ2kiSWZQBalk"
+    }
+  },
+  "plugins": {
+    "entries": {
+      "browser": {
+        "enabled": true
+      },
+      "deepseek": {
+        "enabled": true
+      },
+      "google": {
+        "enabled": true
+      },
+      "telegram": {
+        "enabled": true
+      }
+    },
+    "load": {
+      "paths": [
+        "/usr/local/lib/node_modules/openclaw/dist/extensions/telegram"
+      ]
+    },
+    "installs": {
+      "telegram": {
+        "source": "path",
+        "spec": "telegram",
+        "sourcePath": "/usr/local/lib/node_modules/openclaw/dist/extensions/telegram",
+        "installPath": "/usr/local/lib/node_modules/openclaw/dist/extensions/telegram",
+        "installedAt": "2026-05-12T02:50:58.110Z"
+      }
+    },
+    "allow": [
+      "telegram",
+      "deepseek",
+      "google",
+      "browser",
+      "memory-core"
+    ]
+  },
+  "skills": {
+    "load": {
+      "extraDirs": [
+        "/data/.openclaw/skills"
+      ]
+    },
+    "entries": {
+      "hhmail": {
+        "enabled": true
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "deepseek": {
+        "apiKey": "${DEEPSEEK_API_KEY}",
+        "baseUrl": "https://api.deepseek.com/v1",
+        "models": [
+          {
+            "id": "deepseek-chat",
+            "name": "DeepSeek V3"
+          }
+        ]
+      },
+      "groq": {
+        "apiKey": "${GROQ_API_KEY}",
+        "baseUrl": "https://api.groq.com/openai/v1",
+        "models": [
+          {
+            "id": "llama-3.3-70b-versatile",
+            "name": "Llama 3.3 70B"
+          }
+        ]
+      }
+    }
+  },
+  "mcp": {
+    "servers": {
+      "composio": {
+        "transport": "sse",
+        "url": "https://connect.composio.dev/mcp",
+        "headers": {
+          "x-consumer-api-key": "${COMPOSIO_API_KEY}"
+        }
+      }
+    }
+  },
+  "hooks": {
+    "token": "hooks_Dt4S8VqiNRzYJ1HDFzFlQ2kiSWZQBalk"
+  },
+  "meta": {
+    "lastTouchedAt": "2026-05-14T22:35:42.326Z",
+    "lastTouchedVersion": "2026.4.21"
+  }
+}

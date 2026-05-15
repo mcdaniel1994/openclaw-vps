@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forge - Environment Visualization</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'SF Mono', 'JetBrains Mono', 'Fira Code', monospace;
+    background: #0d1117;
+    color: #c9d1d9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+  }
+  h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #58a6ff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .layer {
+    width: 100%;
+    border-radius: 12px;
+    padding: 16px 20px;
+    position: relative;
+    transition: all 0.2s;
+  }
+  .layer:hover {
+    filter: brightness(1.15);
+  }
+
+  .layer-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.6;
+    margin-bottom: 6px;
+  }
+
+  .layer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .item {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .item .emoji { font-size: 16px; }
+  .item .label { color: #e6edf3; }
+  .item .sub { color: #8b949e; font-size: 11px; }
+
+  .connector {
+    color: #30363d;
+    font-size: 16px;
+    padding: 2px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .connector span { opacity: 0.5; }
+
+  .corner-info {
+    margin-top: 30px;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 14px 18px;
+    max-width: 700px;
+    width: 100%;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .corner-info .row { display: flex; justify-content: space-between; padding: 3px 0; }
+  .corner-info .key { color: #8b949e; }
+  .corner-info .val { color: #e6edf3; }
+
+  .provider { background: linear-gradient(135deg, #1a2332, #0d1117); border: 1px solid #1f3a5f; }
+  .provider .layer-label { color: #58a6ff; }
+
+  .os-layer { background: linear-gradient(135deg, #1c2a1c, #0d1117); border: 1px solid #1f4a2f; }
+  .os-layer .layer-label { color: #3fb950; }
+
+  .runtime-layer { background: linear-gradient(135deg, #2a1c2a, #0d1117); border: 1px solid #6e40c9; }
+  .runtime-layer .layer-label { color: #bc8cff; }
+
+  .openclaw-layer { background: linear-gradient(135deg, #1c2433, #0d1117); border: 1px solid #264aaf; }
+  .openclaw-layer .layer-label { color: #7ee8ff; }
+
+  .node-layer { background: linear-gradient(135deg, #2a1a1a, #0d1117); border: 1px solid #da3633; }
+  .node-layer .layer-label { color: #ff7b72; }
+
+  .icons { margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .icon-tag {
+    background: #21262d;
+    border-radius: 20px;
+    padding: 4px 12px 4px 8px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #8b949e;
+    border: 1px solid #30363d;
+  }
+  .icon-tag .emoji { font-size: 12px; }
+</style>
+</head>
+<body>
+<h1>🛠️ Forge — Runtime Environment</h1>
+
+<div class="diagram">
+
+  <!-- Hostinger VPS -->
+  <div class="layer provider">
+    <div class="layer-label">☁️  Infrastructure Provider</div>
+    <div class="layer-content">
+      <div class="item"><span class="emoji">🌐</span><span><span class="label">Hostinger VPS</span><br><span class="sub">srv1662503.hstgr.cloud</span></span></div>
+    </div>
+  </div>
+
+  <div class="connector"><span>┃</span></div>
+
+  <!-- OS -->
+  <div class="layer os-layer">
+    <div class="layer-label">🖥️  Operating System</div>
+    <div class="layer-content">
+      <div class="item"><span class="emoji">🐧</span><span><span class="label">Debian 13 Trixie</span><br><span class="sub">Linux 6.8.0-107-generic x86_64</span></span></div>
+      <div class="item"><span class="emoji">💾</span><span><span class="label">96GB / 2 cores</span><br><span class="sub">AMD EPYC 9354P · 7.8GB RAM</span></span></div>
+    </div>
+  </div>
+
+  <div class="connector"><span>┃</span></div>
+
+  <!-- Runtime -->
+  <div class="layer runtime-layer">
+    <div class="layer-label">⚡  Runtime</div>
+    <div class="layer-content">
+      <div class="item"><span class="emoji">🟢</span><span><span class="label">Node.js v22.22.2</span><br><span class="sub">npm 10.9.7</span></span></div>
+    </div>
+  </div>
+
+  <div class="connector"><span>┃</span></div>
+
+  <!-- OpenClaw -->
+  <div class="layer openclaw-layer">
+    <div class="layer-label">🤖  OpenClaw (v2026.4.21)</div>
+    <div class="layer-content">
+      <div class="item"><span class="emoji">⚙️</span><span><span class="label">Gateway (PID 33)</span><br><span class="sub">~19 min CPU · 600MB RSS</span></span></div>
+      <div class="item"><span class="emoji">🔌</span><span><span class="label">Agent (PID 25)</span><br><span class="sub">~65MB RSS</span></span></div>
+    </div>
+  </div>
+
+  <div class="connector"><span>┃</span></div>
+
+  <!-- Capabilities -->
+  <div class="layer node-layer">
+    <div class="layer-label">🔧  Active Capabilities</div>
+    <div class="layer-content">
+      <div class="item"><span class="emoji">📡</span><span class="label">Telegram</span></div>
+      <div class="item"><span class="emoji">🌍</span><span class="label">Browser</span></div>
+      <div class="item"><span class="emoji">🧠</span><span class="label">DeepSeek V3</span></div>
+      <div class="item"><span class="emoji">☁️</span><span class="label">Google</span></div>
+      <div class="item"><span class="emoji">💬</span><span class="label">Webchat</span></div>
+      <div class="item"><span class="emoji">💾</span><span class="label">Memory Core</span></div>
+    </div>
+  </div>
+
+  <div class="connector"><span>┃</span></div>
+
+  <!-- Node layer -->
+  <div class="layer" style="background:linear-gradient(135deg,#1f2a1a,#0d1117);border:1px solid #2a6b3a;">
+    <div class="layer-label" style="color:#7ee787;">🖥️  Paired Nodes</div>
+    <div class="layer-content">
+      <div class="item"><span class="emoji">🍎</span><span><span class="label">Cory's MacBook Pro</span><br><span class="sub">openclaw-macos</span></span></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="corner-info">
+  <div class="row"><span class="key">Agent</span><span class="val">Forge 🛠️ — DeepSeek V3</span></div>
+  <div class="row"><span class="key">Workspace</span><span class="val">/data/.openclaw/workspace</span></div>
+  <div class="row"><span class="key">Identity</span><span class="val">SOUL.md · IDENTITY.md · USER.md</span></div>
+  <div class="row"><span class="key">Last Reboot</span><span class="val">~May 12</span></div>
+  <div class="row"><span class="key">Disk Free</span><span class="val">87G / 96G</span></div>
+  <div class="row"><span class="key">No Docker</span><span class="val">📦 OpenClaw runs directly on the host</span></div>
+</div>
+
+<div class="icons">
+  <span class="icon-tag"><span class="emoji">🔑</span> mode: local</span>
+  <span class="icon-tag"><span class="emoji">📡</span> remote: tunneled</span>
+  <span class="icon-tag"><span class="emoji">🔒</span> auth: token</span>
+</div>
+
+</body>
+</html>
