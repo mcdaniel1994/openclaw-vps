@@ -3,22 +3,24 @@
 *.env
 
 # Never push personal data
-data/.openclaw/agents/main/agent/auth-profiles.json
-data/.openclaw/credentials/
-data/.openclaw/identity/
-data/.openclaw/memory/
-data/.openclaw/agents/main/sessions/
-data/.openclaw/logs/
-data/.openclaw/tasks/
-data/.openclaw/flows/
-data/.openclaw/devices/
-data/.openclaw/telegram/
-data/.openclaw/delivery-queue/
-data/.openclaw/nodes/
-data/.openclaw/my-uploads/
+data/.composio/
+data/.config/
+
+# OpenClaw runtime state can include secrets, sessions, uploads, and local config.
+# Keep only the assignment-safe workspace docs, helper scripts, and custom skills visible.
+data/.openclaw/*
+!data/.openclaw/workspace/
+data/.openclaw/workspace/*
+!data/.openclaw/workspace/*.md
+!data/.openclaw/workspace/scripts/
+!data/.openclaw/workspace/scripts/*.sh
+!data/.openclaw/skills/
+!data/.openclaw/skills/*/
+!data/.openclaw/skills/*/SKILL.md
 
 # Never push cache and build files
 data/.cache/
+data/.local/
 data/.npm/
 data/.npm-global/
 data/linuxbrew/
